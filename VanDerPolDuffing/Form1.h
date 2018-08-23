@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include<math.h>
 #include<fstream>
@@ -56,9 +56,12 @@ namespace WindowsFormApplication1 {
 	private: System::Windows::Forms::GroupBox^  Parametry;
 	private: System::Windows::Forms::Panel^  panel2;
 	private: System::Windows::Forms::TextBox^  textBox5;
-	private: System::Windows::Forms::TextBox^  textBox4;
-	private: System::Windows::Forms::TextBox^  textBox3;
-	private: System::Windows::Forms::TextBox^  textBox2;
+	private: System::Windows::Forms::TextBox^  podajMi;
+
+	private: System::Windows::Forms::TextBox^  podajY0;
+
+	private: System::Windows::Forms::TextBox^  podajX0;
+
 	private: System::Windows::Forms::TextBox^  znajdzWiersz;
 
 	private: System::Windows::Forms::Button^  znajdz;
@@ -79,10 +82,13 @@ namespace WindowsFormApplication1 {
 	private: System::Windows::Forms::Label^  label5;
 	private: System::Windows::Forms::Label^  label4;
 	private: System::Windows::Forms::Label^  label3;
+
+
+
+	private: System::Windows::Forms::TextBox^  textBox1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column3;
-	private: System::Windows::Forms::TextBox^  textBox1;
 	protected:
 
 	private:
@@ -116,13 +122,14 @@ namespace WindowsFormApplication1 {
 			this->wyczyscWykresFazowy = (gcnew System::Windows::Forms::Button());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->Parametry = (gcnew System::Windows::Forms::GroupBox());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->podajMi = (gcnew System::Windows::Forms::TextBox());
+			this->podajY0 = (gcnew System::Windows::Forms::TextBox());
+			this->podajX0 = (gcnew System::Windows::Forms::TextBox());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
 			this->znajdzWiersz = (gcnew System::Windows::Forms::TextBox());
 			this->znajdz = (gcnew System::Windows::Forms::Button());
@@ -135,7 +142,6 @@ namespace WindowsFormApplication1 {
 			this->rysujWykresFazowy = (gcnew System::Windows::Forms::Button());
 			this->rysujWykres = (gcnew System::Windows::Forms::Button());
 			this->wykonajObliczenia = (gcnew System::Windows::Forms::Button());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->wykres))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->wykresFazowy))->BeginInit();
 			this->menuStrip1->SuspendLayout();
@@ -246,7 +252,7 @@ namespace WindowsFormApplication1 {
 			this->wyczyscWykres->Name = L"wyczyscWykres";
 			this->wyczyscWykres->Size = System::Drawing::Size(75, 23);
 			this->wyczyscWykres->TabIndex = 7;
-			this->wyczyscWykres->Text = L"Wyczy��";
+			this->wyczyscWykres->Text = L"Wyczyść";
 			this->wyczyscWykres->UseVisualStyleBackColor = true;
 			this->wyczyscWykres->Click += gcnew System::EventHandler(this, &Form1::wyczyscWykres_Click);
 			// 
@@ -256,7 +262,7 @@ namespace WindowsFormApplication1 {
 			this->wyczyscWykresFazowy->Name = L"wyczyscWykresFazowy";
 			this->wyczyscWykresFazowy->Size = System::Drawing::Size(75, 23);
 			this->wyczyscWykresFazowy->TabIndex = 8;
-			this->wyczyscWykresFazowy->Text = L"Wyczy��";
+			this->wyczyscWykresFazowy->Text = L"Wyczyść";
 			this->wyczyscWykresFazowy->UseVisualStyleBackColor = true;
 			this->wyczyscWykresFazowy->Click += gcnew System::EventHandler(this, &Form1::wyczyscWykresFazowy_Click);
 			// 
@@ -281,9 +287,9 @@ namespace WindowsFormApplication1 {
 			this->Parametry->Controls->Add(this->label4);
 			this->Parametry->Controls->Add(this->label3);
 			this->Parametry->Controls->Add(this->textBox5);
-			this->Parametry->Controls->Add(this->textBox4);
-			this->Parametry->Controls->Add(this->textBox3);
-			this->Parametry->Controls->Add(this->textBox2);
+			this->Parametry->Controls->Add(this->podajMi);
+			this->Parametry->Controls->Add(this->podajY0);
+			this->Parametry->Controls->Add(this->podajX0);
 			this->Parametry->Location = System::Drawing::Point(12, 7);
 			this->Parametry->Name = L"Parametry";
 			this->Parametry->Size = System::Drawing::Size(248, 114);
@@ -291,32 +297,39 @@ namespace WindowsFormApplication1 {
 			this->Parametry->TabStop = false;
 			this->Parametry->Text = L"Parametry";
 			// 
+			// textBox1
+			// 
+			this->textBox1->Location = System::Drawing::Point(102, 65);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(100, 20);
+			this->textBox1->TabIndex = 7;
+			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
 			this->label5->Location = System::Drawing::Point(158, 20);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(35, 13);
+			this->label5->Size = System::Drawing::Size(25, 13);
 			this->label5->TabIndex = 6;
-			this->label5->Text = L"label5";
+			this->label5->Text = L"μ  =";
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
 			this->label4->Location = System::Drawing::Point(81, 20);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(18, 13);
+			this->label4->Size = System::Drawing::Size(21, 13);
 			this->label4->TabIndex = 5;
-			this->label4->Text = L"y=";
+			this->label4->Text = L"y =";
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
 			this->label3->Location = System::Drawing::Point(7, 20);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(18, 13);
+			this->label3->Size = System::Drawing::Size(21, 13);
 			this->label3->TabIndex = 4;
-			this->label3->Text = L"x=";
+			this->label3->Text = L"x =";
 			// 
 			// textBox5
 			// 
@@ -325,26 +338,26 @@ namespace WindowsFormApplication1 {
 			this->textBox5->Size = System::Drawing::Size(50, 20);
 			this->textBox5->TabIndex = 3;
 			// 
-			// textBox4
+			// podajMi
 			// 
-			this->textBox4->Location = System::Drawing::Point(192, 17);
-			this->textBox4->Name = L"textBox4";
-			this->textBox4->Size = System::Drawing::Size(50, 20);
-			this->textBox4->TabIndex = 2;
+			this->podajMi->Location = System::Drawing::Point(189, 17);
+			this->podajMi->Name = L"podajMi";
+			this->podajMi->Size = System::Drawing::Size(50, 20);
+			this->podajMi->TabIndex = 2;
 			// 
-			// textBox3
+			// podajY0
 			// 
-			this->textBox3->Location = System::Drawing::Point(102, 17);
-			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(50, 20);
-			this->textBox3->TabIndex = 1;
+			this->podajY0->Location = System::Drawing::Point(102, 17);
+			this->podajY0->Name = L"podajY0";
+			this->podajY0->Size = System::Drawing::Size(50, 20);
+			this->podajY0->TabIndex = 1;
 			// 
-			// textBox2
+			// podajX0
 			// 
-			this->textBox2->Location = System::Drawing::Point(25, 17);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(50, 20);
-			this->textBox2->TabIndex = 0;
+			this->podajX0->Location = System::Drawing::Point(25, 17);
+			this->podajX0->Name = L"podajX0";
+			this->podajX0->Size = System::Drawing::Size(50, 20);
+			this->podajX0->TabIndex = 0;
 			// 
 			// panel2
 			// 
@@ -415,19 +428,21 @@ namespace WindowsFormApplication1 {
 			this->Column1->HeaderText = L"nr iteracji";
 			this->Column1->Name = L"Column1";
 			this->Column1->ReadOnly = true;
-			this->Column1->Width = 50;
+			this->Column1->Width = 72;
 			// 
 			// Column2
 			// 
 			this->Column2->HeaderText = L"x";
 			this->Column2->Name = L"Column2";
 			this->Column2->ReadOnly = true;
+			this->Column2->Width = 73;
 			// 
 			// Column3
 			// 
 			this->Column3->HeaderText = L"y";
 			this->Column3->Name = L"Column3";
 			this->Column3->ReadOnly = true;
+			this->Column3->Width = 73;
 			// 
 			// zapiszDane
 			// 
@@ -437,6 +452,7 @@ namespace WindowsFormApplication1 {
 			this->zapiszDane->TabIndex = 14;
 			this->zapiszDane->Text = L"Zapisz dane";
 			this->zapiszDane->UseVisualStyleBackColor = true;
+			this->zapiszDane->Click += gcnew System::EventHandler(this, &Form1::zapiszDane_Click);
 			// 
 			// rysujWykresFazowy
 			// 
@@ -467,13 +483,6 @@ namespace WindowsFormApplication1 {
 			this->wykonajObliczenia->Text = L"Wykonaj obliczenia";
 			this->wykonajObliczenia->UseVisualStyleBackColor = true;
 			this->wykonajObliczenia->Click += gcnew System::EventHandler(this, &Form1::wykonajObliczenia_Click);
-			// 
-			// textBox1
-			// 
-			this->textBox1->Location = System::Drawing::Point(102, 65);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(100, 20);
-			this->textBox1->TabIndex = 7;
 			// 
 			// Form1
 			// 
@@ -529,7 +538,7 @@ private: System::Void wyczyscWykresFazowy_Click(System::Object^  sender, System:
 		}
 		catch (Exception ^brak)
 		{
-			MessageBox::Show("Brak warto�ci.");
+			MessageBox::Show("Brak wartości.");
 		}
 	
 }
@@ -541,21 +550,32 @@ private: System::Void wykonajObliczenia_Click(System::Object^  sender, System::E
 	double k1, k2, k3, k4;
 	double m1, m2, m3, m4;
 	double x[1501], y[1501];
-	double mi, h;
+	double mi, h, a, w;
 	
-			x[0] = 1;
-			y[0] = 1;
-			mi = 1;
+	if (podajX0->Text->IsNullOrWhiteSpace(podajX0->Text) ||
+		podajY0->Text->IsNullOrWhiteSpace(podajY0->Text) ||
+		podajMi->Text->IsNullOrWhiteSpace(podajMi->Text)) {
+		MessageBox::Show("Brak parametrów");
+	}
+	else {
+		try {
+
+			x[0] = Double::Parse(podajX0->Text);
+			y[0] = Double::Parse(podajY0->Text);
+			mi = Double::Parse(podajMi->Text);
 			h = 0.1;
+			a = 0.01;
+			w = 1;
+
 			for (int n = 0; n < 1500; n++) {
 				k1 = y[n];
-				m1 = (-x[n]) + mi*(1 - pow(x[n], 2))*y[n];
+				m1 = -(pow(x[n], 3)) + mi*(1 - pow(x[n], 2))*y[n] + x[n] + cos(n*w);
 				k2 = y[n] + h*m1 / 2;
-				m2 = -(x[n] + h*k1 / 2) + mi*(1 - pow(x[n] + h*k1 / 2, 2))*(y[n] + h*m1 / 2);
+				m2 = -(pow((x[n] + h*k1 / 2), 3)) + mi*(1 - pow(x[n] + h*k1 / 2, 2))*(y[n] + h*m1 / 2) + (x[n] + h*k1 / 2) + cos(w*n);
 				k3 = y[n] + h*m2 / 2;
-				m3 = -(x[n] + h*k2 / 2) + mi*(1 - pow(x[n] + h*k2 / 2, 2))*(y[n] + h*m2 / 2);
+				m3 = -(pow((x[n] + h*k2 / 2), 3)) + mi*(1 - pow(x[n] + h*k2 / 2, 2))*(y[n] + h*m2 / 2) + (x[n] + h*k2 / 2) + cos(w*n);
 				k4 = y[n] + h*m3;
-				m4 = -(x[n] + h*k3) + mi*(1 - pow(x[n] + h*k3, 2))*(y[n] + h*m3);
+				m4 = -(pow((x[n] + h*k3), 3)) + mi*(1 - pow(x[n] + h*k3, 2))*(y[n] + h*m3) + (x[n] + h*k3) + cos(w*n);
 
 				x[n + 1] = x[n] + h*(k1 + 2 * k2 + 2 * k3 + k4) / 6;
 				y[n + 1] = y[n] + h*(m1 + 2 * m2 + 2 * m3 + m4) / 6;
@@ -564,9 +584,14 @@ private: System::Void wykonajObliczenia_Click(System::Object^  sender, System::E
 				this->tabelaDanych->Rows[n]->Cells[0]->Value = n;
 				this->tabelaDanych->Rows[n]->Cells[1]->Value = x[n];
 				this->tabelaDanych->Rows[n]->Cells[2]->Value = y[n];
-				
-				
+							
 			}
+		}
+		catch (Exception ^wyjatek) {
+			MessageBox::Show(wyjatek->ToString(), "Błąd. Złe wartości parametrów.");
+		}
+
+	}
 
 
 }
@@ -584,7 +609,27 @@ private: System::Void rysujWykresFazowy_Click(System::Object^  sender, System::E
 	}
 	catch (Exception ^brak)
 	{
-		MessageBox::Show("Brak warto�ci.");
+		MessageBox::Show("Brak wartości.");
+	}
+}
+
+private: System::Void zapiszDane_Click(System::Object^  sender, System::EventArgs^  e) {
+	using namespace std;
+
+	fstream dane;
+	try {
+		dane.open("zapisaneDane.txt", ios::out);
+		for (int i = 0; i < 1500; i++) {
+			dane << Convert::ToDouble(tabelaDanych->Rows[i]->Cells[0]->Value) << ", ";
+			dane << Convert::ToDouble(tabelaDanych->Rows[i]->Cells[1]->Value) << ", ";
+			dane << Convert::ToDouble(tabelaDanych->Rows[i]->Cells[2]->Value) << endl;
+		}
+		dane.close();
+
+		MessageBox::Show("Zapisano dane");
+	}
+	catch (Exception ^ex) {
+		MessageBox::Show(ex->ToString(), "Brak wartości.");
 	}
 }
 };
