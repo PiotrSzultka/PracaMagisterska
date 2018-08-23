@@ -112,12 +112,12 @@ namespace WindowsFormApplication1 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^  chartArea3 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^  legend3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^  series3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^  chartArea4 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^  legend4 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^  series4 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^  chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^  legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^  series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^  chartArea2 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^  legend2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^  series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->wykres = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->label2 = (gcnew System::Windows::Forms::Label());
@@ -178,19 +178,19 @@ namespace WindowsFormApplication1 {
 			// wykres
 			// 
 			this->wykres->BackColor = System::Drawing::Color::Gainsboro;
-			chartArea3->Name = L"ChartArea1";
-			this->wykres->ChartAreas->Add(chartArea3);
-			legend3->Enabled = false;
-			legend3->Name = L"Legend1";
-			this->wykres->Legends->Add(legend3);
+			chartArea1->Name = L"ChartArea1";
+			this->wykres->ChartAreas->Add(chartArea1);
+			legend1->Enabled = false;
+			legend1->Name = L"Legend1";
+			this->wykres->Legends->Add(legend1);
 			this->wykres->Location = System::Drawing::Point(29, 94);
 			this->wykres->Name = L"wykres";
 			this->wykres->Palette = System::Windows::Forms::DataVisualization::Charting::ChartColorPalette::None;
 			this->wykres->RightToLeft = System::Windows::Forms::RightToLeft::No;
-			series3->ChartArea = L"ChartArea1";
-			series3->Legend = L"Legend1";
-			series3->Name = L"Series1";
-			this->wykres->Series->Add(series3);
+			series1->ChartArea = L"ChartArea1";
+			series1->Legend = L"Legend1";
+			series1->Name = L"Series1";
+			this->wykres->Series->Add(series1);
 			this->wykres->Size = System::Drawing::Size(324, 236);
 			this->wykres->TabIndex = 1;
 			this->wykres->Text = L"wykres";
@@ -210,17 +210,17 @@ namespace WindowsFormApplication1 {
 			// wykresFazowy
 			// 
 			this->wykresFazowy->BackColor = System::Drawing::Color::Gainsboro;
-			chartArea4->Name = L"ChartArea1";
-			this->wykresFazowy->ChartAreas->Add(chartArea4);
-			legend4->Enabled = false;
-			legend4->Name = L"Legend1";
-			this->wykresFazowy->Legends->Add(legend4);
+			chartArea2->Name = L"ChartArea1";
+			this->wykresFazowy->ChartAreas->Add(chartArea2);
+			legend2->Enabled = false;
+			legend2->Name = L"Legend1";
+			this->wykresFazowy->Legends->Add(legend2);
 			this->wykresFazowy->Location = System::Drawing::Point(382, 67);
 			this->wykresFazowy->Name = L"wykresFazowy";
-			series4->ChartArea = L"ChartArea1";
-			series4->Legend = L"Legend1";
-			series4->Name = L"Series1";
-			this->wykresFazowy->Series->Add(series4);
+			series2->ChartArea = L"ChartArea1";
+			series2->Legend = L"Legend1";
+			series2->Name = L"Series1";
+			this->wykresFazowy->Series->Add(series2);
 			this->wykresFazowy->Size = System::Drawing::Size(324, 236);
 			this->wykresFazowy->TabIndex = 3;
 			this->wykresFazowy->Text = L"wykresFazowy";
@@ -443,6 +443,7 @@ namespace WindowsFormApplication1 {
 			this->znajdz->TabIndex = 17;
 			this->znajdz->Text = L"Znajdz";
 			this->znajdz->UseVisualStyleBackColor = true;
+			this->znajdz->Click += gcnew System::EventHandler(this, &Form1::znajdz_Click);
 			// 
 			// koniec
 			// 
@@ -589,6 +590,7 @@ private: System::Void wyczyscWykresFazowy_Click(System::Object^  sender, System:
 		catch (Exception ^brak)
 		{
 			MessageBox::Show("Brak wartości.");
+			
 		}
 	
 }
@@ -622,13 +624,13 @@ private: System::Void wykonajObliczenia_Click(System::Object^  sender, System::E
 			h = Double::Parse(podajH->Text);
 			for (int n = 0; n < 1500; n++) {
 				k1 = y[n];
-				m1 = mi*(1 - pow(x[n], 2))*y[n] - x[n] -(pow(x[n], 3)) + cos(n*w);
+				m1 = mi*(1 - pow(x[n], 2))*y[n] - x[n] -a*(pow(x[n], 3)) + cos(n*w);
 				k2 = y[n] + (h*m1 / 2);
-				m2 = mi*(1 - pow(x[n] + (h*k1 / 2), 2))*(y[n] + (h*m1 / 2)) + (x[n] + (h*k1 / 2)) - (pow((x[n] + (h*k1 / 2)), 3)) + cos(w*(n+h/2));
+				m2 = mi*(1 - pow(x[n] + (h*k1 / 2), 2))*(y[n] + (h*m1 / 2)) + (x[n] + (h*k1 / 2)) - a*(pow((x[n] + (h*k1 / 2)), 3)) + cos(w*(n+h/2));
 				k3 = y[n] + (h*m2 / 2);
-				m3 = mi*(1 - pow(x[n] + (h*k2 / 2), 2))*(y[n] + (h*m2 / 2)) + (x[n] + (h*k2 / 2)) - (pow((x[n] + (h*k2 / 2)), 3)) + cos(w*(n+h / 2));
+				m3 = mi*(1 - pow(x[n] + (h*k2 / 2), 2))*(y[n] + (h*m2 / 2)) + (x[n] + (h*k2 / 2)) - a*(pow((x[n] + (h*k2 / 2)), 3)) + cos(w*(n+h / 2));
 				k4 = y[n] + h*m3;
-				m4 = mi*(1 - pow(x[n] + (h*k1), 2))*(y[n] + (h*m1)) + (x[n] + (h*k1)) - (pow((x[n] + (h*k1)), 3)) + cos(w*(n+h));
+				m4 = mi*(1 - pow(x[n] + (h*k1), 2))*(y[n] + (h*m1)) + (x[n] + (h*k1)) - a*(pow((x[n] + (h*k1)), 3)) + cos(w*(n+h));
 
 				x[n + 1] = x[n] + h*(k1 + 2 * k2 + 2 * k3 + k4) / 6;
 				y[n + 1] = y[n] + h*(m1 + 2 * m2 + 2 * m3 + m4) / 6;
@@ -687,6 +689,12 @@ private: System::Void zapiszDane_Click(System::Object^  sender, System::EventArg
 }
 
 
+private: System::Void znajdz_Click(System::Object^  sender, System::EventArgs^  e) {
+	int a = Double::Parse(znajdzWiersz->Text);
+	double x = Convert::ToDouble(tabelaDanych->Rows[a]->Cells[1]->Value);
+	double y = Convert::ToDouble(tabelaDanych->Rows[a]->Cells[2]->Value);
+	MessageBox::Show( "x = " + x + "\ny = "+ y  ,"Wartości w wierszu numer " + a);
+}
 };
 }
 
