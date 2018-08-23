@@ -82,6 +82,7 @@ namespace WindowsFormApplication1 {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column3;
+	private: System::Windows::Forms::TextBox^  textBox1;
 	protected:
 
 	private:
@@ -134,6 +135,7 @@ namespace WindowsFormApplication1 {
 			this->rysujWykresFazowy = (gcnew System::Windows::Forms::Button());
 			this->rysujWykres = (gcnew System::Windows::Forms::Button());
 			this->wykonajObliczenia = (gcnew System::Windows::Forms::Button());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->wykres))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->wykresFazowy))->BeginInit();
 			this->menuStrip1->SuspendLayout();
@@ -274,6 +276,7 @@ namespace WindowsFormApplication1 {
 			// Parametry
 			// 
 			this->Parametry->BackColor = System::Drawing::Color::Silver;
+			this->Parametry->Controls->Add(this->textBox1);
 			this->Parametry->Controls->Add(this->label5);
 			this->Parametry->Controls->Add(this->label4);
 			this->Parametry->Controls->Add(this->label3);
@@ -317,7 +320,7 @@ namespace WindowsFormApplication1 {
 			// 
 			// textBox5
 			// 
-			this->textBox5->Location = System::Drawing::Point(37, 43);
+			this->textBox5->Location = System::Drawing::Point(25, 65);
 			this->textBox5->Name = L"textBox5";
 			this->textBox5->Size = System::Drawing::Size(50, 20);
 			this->textBox5->TabIndex = 3;
@@ -464,6 +467,13 @@ namespace WindowsFormApplication1 {
 			this->wykonajObliczenia->Text = L"Wykonaj obliczenia";
 			this->wykonajObliczenia->UseVisualStyleBackColor = true;
 			this->wykonajObliczenia->Click += gcnew System::EventHandler(this, &Form1::wykonajObliczenia_Click);
+			// 
+			// textBox1
+			// 
+			this->textBox1->Location = System::Drawing::Point(102, 65);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(100, 20);
+			this->textBox1->TabIndex = 7;
 			// 
 			// Form1
 			// 
