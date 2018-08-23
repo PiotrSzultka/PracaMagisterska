@@ -55,12 +55,12 @@ namespace WindowsFormApplication1 {
 	private: System::Windows::Forms::Panel^  panel1;
 	private: System::Windows::Forms::GroupBox^  Parametry;
 	private: System::Windows::Forms::Panel^  panel2;
-	private: System::Windows::Forms::TextBox^  textBox5;
+
 	private: System::Windows::Forms::TextBox^  podajMi;
 
 	private: System::Windows::Forms::TextBox^  podajY0;
 
-	private: System::Windows::Forms::TextBox^  podajX0;
+
 
 	private: System::Windows::Forms::TextBox^  znajdzWiersz;
 
@@ -85,10 +85,18 @@ namespace WindowsFormApplication1 {
 
 
 
-	private: System::Windows::Forms::TextBox^  textBox1;
+
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column3;
+	private: System::Windows::Forms::Label^  label7;
+	private: System::Windows::Forms::Label^  label6;
+	private: System::Windows::Forms::TextBox^  podajH;
+
+	private: System::Windows::Forms::Label^  label8;
+	private: System::Windows::Forms::TextBox^  podajW;
+	private: System::Windows::Forms::TextBox^  podajA;
+	private: System::Windows::Forms::TextBox^  podajX0;
 	protected:
 
 	private:
@@ -104,12 +112,12 @@ namespace WindowsFormApplication1 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^  chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^  legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^  series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^  chartArea2 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^  legend2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^  series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^  chartArea3 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^  legend3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^  series3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^  chartArea4 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^  legend4 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^  series4 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->wykres = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->label2 = (gcnew System::Windows::Forms::Label());
@@ -122,14 +130,18 @@ namespace WindowsFormApplication1 {
 			this->wyczyscWykresFazowy = (gcnew System::Windows::Forms::Button());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->Parametry = (gcnew System::Windows::Forms::GroupBox());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->podajH = (gcnew System::Windows::Forms::TextBox());
+			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->podajW = (gcnew System::Windows::Forms::TextBox());
+			this->podajA = (gcnew System::Windows::Forms::TextBox());
+			this->podajX0 = (gcnew System::Windows::Forms::TextBox());
+			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
 			this->podajMi = (gcnew System::Windows::Forms::TextBox());
 			this->podajY0 = (gcnew System::Windows::Forms::TextBox());
-			this->podajX0 = (gcnew System::Windows::Forms::TextBox());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
 			this->znajdzWiersz = (gcnew System::Windows::Forms::TextBox());
 			this->znajdz = (gcnew System::Windows::Forms::Button());
@@ -166,19 +178,19 @@ namespace WindowsFormApplication1 {
 			// wykres
 			// 
 			this->wykres->BackColor = System::Drawing::Color::Gainsboro;
-			chartArea1->Name = L"ChartArea1";
-			this->wykres->ChartAreas->Add(chartArea1);
-			legend1->Enabled = false;
-			legend1->Name = L"Legend1";
-			this->wykres->Legends->Add(legend1);
+			chartArea3->Name = L"ChartArea1";
+			this->wykres->ChartAreas->Add(chartArea3);
+			legend3->Enabled = false;
+			legend3->Name = L"Legend1";
+			this->wykres->Legends->Add(legend3);
 			this->wykres->Location = System::Drawing::Point(29, 94);
 			this->wykres->Name = L"wykres";
 			this->wykres->Palette = System::Windows::Forms::DataVisualization::Charting::ChartColorPalette::None;
 			this->wykres->RightToLeft = System::Windows::Forms::RightToLeft::No;
-			series1->ChartArea = L"ChartArea1";
-			series1->Legend = L"Legend1";
-			series1->Name = L"Series1";
-			this->wykres->Series->Add(series1);
+			series3->ChartArea = L"ChartArea1";
+			series3->Legend = L"Legend1";
+			series3->Name = L"Series1";
+			this->wykres->Series->Add(series3);
 			this->wykres->Size = System::Drawing::Size(324, 236);
 			this->wykres->TabIndex = 1;
 			this->wykres->Text = L"wykres";
@@ -198,17 +210,17 @@ namespace WindowsFormApplication1 {
 			// wykresFazowy
 			// 
 			this->wykresFazowy->BackColor = System::Drawing::Color::Gainsboro;
-			chartArea2->Name = L"ChartArea1";
-			this->wykresFazowy->ChartAreas->Add(chartArea2);
-			legend2->Enabled = false;
-			legend2->Name = L"Legend1";
-			this->wykresFazowy->Legends->Add(legend2);
+			chartArea4->Name = L"ChartArea1";
+			this->wykresFazowy->ChartAreas->Add(chartArea4);
+			legend4->Enabled = false;
+			legend4->Name = L"Legend1";
+			this->wykresFazowy->Legends->Add(legend4);
 			this->wykresFazowy->Location = System::Drawing::Point(382, 67);
 			this->wykresFazowy->Name = L"wykresFazowy";
-			series2->ChartArea = L"ChartArea1";
-			series2->Legend = L"Legend1";
-			series2->Name = L"Series1";
-			this->wykresFazowy->Series->Add(series2);
+			series4->ChartArea = L"ChartArea1";
+			series4->Legend = L"Legend1";
+			series4->Name = L"Series1";
+			this->wykresFazowy->Series->Add(series4);
 			this->wykresFazowy->Size = System::Drawing::Size(324, 236);
 			this->wykresFazowy->TabIndex = 3;
 			this->wykresFazowy->Text = L"wykresFazowy";
@@ -282,14 +294,18 @@ namespace WindowsFormApplication1 {
 			// Parametry
 			// 
 			this->Parametry->BackColor = System::Drawing::Color::Silver;
-			this->Parametry->Controls->Add(this->textBox1);
+			this->Parametry->Controls->Add(this->podajH);
+			this->Parametry->Controls->Add(this->label8);
+			this->Parametry->Controls->Add(this->podajW);
+			this->Parametry->Controls->Add(this->podajA);
+			this->Parametry->Controls->Add(this->podajX0);
+			this->Parametry->Controls->Add(this->label7);
+			this->Parametry->Controls->Add(this->label6);
 			this->Parametry->Controls->Add(this->label5);
 			this->Parametry->Controls->Add(this->label4);
 			this->Parametry->Controls->Add(this->label3);
-			this->Parametry->Controls->Add(this->textBox5);
 			this->Parametry->Controls->Add(this->podajMi);
 			this->Parametry->Controls->Add(this->podajY0);
-			this->Parametry->Controls->Add(this->podajX0);
 			this->Parametry->Location = System::Drawing::Point(12, 7);
 			this->Parametry->Name = L"Parametry";
 			this->Parametry->Size = System::Drawing::Size(248, 114);
@@ -297,12 +313,60 @@ namespace WindowsFormApplication1 {
 			this->Parametry->TabStop = false;
 			this->Parametry->Text = L"Parametry";
 			// 
-			// textBox1
+			// podajH
 			// 
-			this->textBox1->Location = System::Drawing::Point(102, 65);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(100, 20);
-			this->textBox1->TabIndex = 7;
+			this->podajH->Location = System::Drawing::Point(185, 50);
+			this->podajH->Name = L"podajH";
+			this->podajH->Size = System::Drawing::Size(50, 20);
+			this->podajH->TabIndex = 14;
+			// 
+			// label8
+			// 
+			this->label8->AutoSize = true;
+			this->label8->Location = System::Drawing::Point(158, 52);
+			this->label8->Name = L"label8";
+			this->label8->Size = System::Drawing::Size(25, 13);
+			this->label8->TabIndex = 13;
+			this->label8->Text = L"h  =";
+			// 
+			// podajW
+			// 
+			this->podajW->Location = System::Drawing::Point(102, 50);
+			this->podajW->Name = L"podajW";
+			this->podajW->Size = System::Drawing::Size(50, 20);
+			this->podajW->TabIndex = 12;
+			// 
+			// podajA
+			// 
+			this->podajA->Location = System::Drawing::Point(27, 50);
+			this->podajA->Name = L"podajA";
+			this->podajA->Size = System::Drawing::Size(50, 20);
+			this->podajA->TabIndex = 11;
+			// 
+			// podajX0
+			// 
+			this->podajX0->Location = System::Drawing::Point(27, 17);
+			this->podajX0->Name = L"podajX0";
+			this->podajX0->Size = System::Drawing::Size(50, 20);
+			this->podajX0->TabIndex = 10;
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->Location = System::Drawing::Point(80, 52);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(24, 13);
+			this->label7->TabIndex = 9;
+			this->label7->Text = L"w =";
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Location = System::Drawing::Point(7, 52);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(22, 13);
+			this->label6->TabIndex = 8;
+			this->label6->Text = L"a =";
 			// 
 			// label5
 			// 
@@ -331,16 +395,9 @@ namespace WindowsFormApplication1 {
 			this->label3->TabIndex = 4;
 			this->label3->Text = L"x =";
 			// 
-			// textBox5
-			// 
-			this->textBox5->Location = System::Drawing::Point(25, 65);
-			this->textBox5->Name = L"textBox5";
-			this->textBox5->Size = System::Drawing::Size(50, 20);
-			this->textBox5->TabIndex = 3;
-			// 
 			// podajMi
 			// 
-			this->podajMi->Location = System::Drawing::Point(189, 17);
+			this->podajMi->Location = System::Drawing::Point(185, 17);
 			this->podajMi->Name = L"podajMi";
 			this->podajMi->Size = System::Drawing::Size(50, 20);
 			this->podajMi->TabIndex = 2;
@@ -351,13 +408,6 @@ namespace WindowsFormApplication1 {
 			this->podajY0->Name = L"podajY0";
 			this->podajY0->Size = System::Drawing::Size(50, 20);
 			this->podajY0->TabIndex = 1;
-			// 
-			// podajX0
-			// 
-			this->podajX0->Location = System::Drawing::Point(25, 17);
-			this->podajX0->Name = L"podajX0";
-			this->podajX0->Size = System::Drawing::Size(50, 20);
-			this->podajX0->TabIndex = 0;
 			// 
 			// panel2
 			// 
@@ -551,10 +601,14 @@ private: System::Void wykonajObliczenia_Click(System::Object^  sender, System::E
 	double m1, m2, m3, m4;
 	double x[1501], y[1501];
 	double mi, h, a, w;
-	
+	this->tabelaDanych->Rows->Clear();
+
 	if (podajX0->Text->IsNullOrWhiteSpace(podajX0->Text) ||
 		podajY0->Text->IsNullOrWhiteSpace(podajY0->Text) ||
-		podajMi->Text->IsNullOrWhiteSpace(podajMi->Text)) {
+		podajMi->Text->IsNullOrWhiteSpace(podajMi->Text) ||
+		podajA->Text->IsNullOrWhiteSpace(podajY0->Text) ||
+		podajW->Text->IsNullOrWhiteSpace(podajY0->Text) ||
+		podajH->Text->IsNullOrWhiteSpace(podajY0->Text) ) {
 		MessageBox::Show("Brak parametrów");
 	}
 	else {
@@ -563,19 +617,18 @@ private: System::Void wykonajObliczenia_Click(System::Object^  sender, System::E
 			x[0] = Double::Parse(podajX0->Text);
 			y[0] = Double::Parse(podajY0->Text);
 			mi = Double::Parse(podajMi->Text);
-			h = 0.1;
-			a = 0.01;
-			w = 1;
-
+			a = Double::Parse(podajA->Text);
+			w = Double::Parse(podajW->Text);
+			h = Double::Parse(podajH->Text);
 			for (int n = 0; n < 1500; n++) {
 				k1 = y[n];
-				m1 = -(pow(x[n], 3)) + mi*(1 - pow(x[n], 2))*y[n] + x[n] + cos(n*w);
-				k2 = y[n] + h*m1 / 2;
-				m2 = -(pow((x[n] + h*k1 / 2), 3)) + mi*(1 - pow(x[n] + h*k1 / 2, 2))*(y[n] + h*m1 / 2) + (x[n] + h*k1 / 2) + cos(w*n);
-				k3 = y[n] + h*m2 / 2;
-				m3 = -(pow((x[n] + h*k2 / 2), 3)) + mi*(1 - pow(x[n] + h*k2 / 2, 2))*(y[n] + h*m2 / 2) + (x[n] + h*k2 / 2) + cos(w*n);
+				m1 = mi*(1 - pow(x[n], 2))*y[n] - x[n] -(pow(x[n], 3)) + cos(n*w);
+				k2 = y[n] + (h*m1 / 2);
+				m2 = mi*(1 - pow(x[n] + (h*k1 / 2), 2))*(y[n] + (h*m1 / 2)) + (x[n] + (h*k1 / 2)) - (pow((x[n] + (h*k1 / 2)), 3)) + cos(w*(n+h/2));
+				k3 = y[n] + (h*m2 / 2);
+				m3 = mi*(1 - pow(x[n] + (h*k2 / 2), 2))*(y[n] + (h*m2 / 2)) + (x[n] + (h*k2 / 2)) - (pow((x[n] + (h*k2 / 2)), 3)) + cos(w*(n+h / 2));
 				k4 = y[n] + h*m3;
-				m4 = -(pow((x[n] + h*k3), 3)) + mi*(1 - pow(x[n] + h*k3, 2))*(y[n] + h*m3) + (x[n] + h*k3) + cos(w*n);
+				m4 = mi*(1 - pow(x[n] + (h*k1), 2))*(y[n] + (h*m1)) + (x[n] + (h*k1)) - (pow((x[n] + (h*k1)), 3)) + cos(w*(n+h));
 
 				x[n + 1] = x[n] + h*(k1 + 2 * k2 + 2 * k3 + k4) / 6;
 				y[n + 1] = y[n] + h*(m1 + 2 * m2 + 2 * m3 + m4) / 6;
@@ -584,7 +637,7 @@ private: System::Void wykonajObliczenia_Click(System::Object^  sender, System::E
 				this->tabelaDanych->Rows[n]->Cells[0]->Value = n;
 				this->tabelaDanych->Rows[n]->Cells[1]->Value = x[n];
 				this->tabelaDanych->Rows[n]->Cells[2]->Value = y[n];
-							
+				
 			}
 		}
 		catch (Exception ^wyjatek) {
@@ -632,6 +685,8 @@ private: System::Void zapiszDane_Click(System::Object^  sender, System::EventArg
 		MessageBox::Show(ex->ToString(), "Brak wartości.");
 	}
 }
+
+
 };
 }
 
