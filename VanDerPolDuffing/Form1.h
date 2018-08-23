@@ -79,6 +79,9 @@ namespace WindowsFormApplication1 {
 	private: System::Windows::Forms::Label^  label5;
 	private: System::Windows::Forms::Label^  label4;
 	private: System::Windows::Forms::Label^  label3;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column2;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column3;
 	protected:
 
 	private:
@@ -124,6 +127,9 @@ namespace WindowsFormApplication1 {
 			this->znajdz = (gcnew System::Windows::Forms::Button());
 			this->koniec = (gcnew System::Windows::Forms::Button());
 			this->tabelaDanych = (gcnew System::Windows::Forms::DataGridView());
+			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->zapiszDane = (gcnew System::Windows::Forms::Button());
 			this->rysujWykresFazowy = (gcnew System::Windows::Forms::Button());
 			this->rysujWykres = (gcnew System::Windows::Forms::Button());
@@ -386,11 +392,39 @@ namespace WindowsFormApplication1 {
 			// 
 			// tabelaDanych
 			// 
+			this->tabelaDanych->AllowUserToAddRows = false;
+			this->tabelaDanych->AllowUserToDeleteRows = false;
+			this->tabelaDanych->AllowUserToOrderColumns = true;
 			this->tabelaDanych->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->tabelaDanych->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {
+				this->Column1,
+					this->Column2, this->Column3
+			});
 			this->tabelaDanych->Location = System::Drawing::Point(382, 12);
 			this->tabelaDanych->Name = L"tabelaDanych";
+			this->tabelaDanych->ReadOnly = true;
+			this->tabelaDanych->RowHeadersVisible = false;
 			this->tabelaDanych->Size = System::Drawing::Size(222, 112);
 			this->tabelaDanych->TabIndex = 15;
+			// 
+			// Column1
+			// 
+			this->Column1->HeaderText = L"nr iteracji";
+			this->Column1->Name = L"Column1";
+			this->Column1->ReadOnly = true;
+			this->Column1->Width = 50;
+			// 
+			// Column2
+			// 
+			this->Column2->HeaderText = L"x";
+			this->Column2->Name = L"Column2";
+			this->Column2->ReadOnly = true;
+			// 
+			// Column3
+			// 
+			this->Column3->HeaderText = L"y";
+			this->Column3->Name = L"Column3";
+			this->Column3->ReadOnly = true;
 			// 
 			// zapiszDane
 			// 
@@ -409,6 +443,7 @@ namespace WindowsFormApplication1 {
 			this->rysujWykresFazowy->TabIndex = 13;
 			this->rysujWykresFazowy->Text = L"Wykres fazowy";
 			this->rysujWykresFazowy->UseVisualStyleBackColor = true;
+			this->rysujWykresFazowy->Click += gcnew System::EventHandler(this, &Form1::rysujWykresFazowy_Click);
 			// 
 			// rysujWykres
 			// 
@@ -471,23 +506,32 @@ private: System::Void wyczyscWykres_Click(System::Object^  sender, System::Event
 private: System::Void wyczyscWykresFazowy_Click(System::Object^  sender, System::EventArgs^  e) {
 	this->wykresFazowy->Series->Clear();
 }
-private: System::Void rysujWykres_Click(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void rysujWykres_Click(System::Object^  sender, System::EventArgs^  e) {
+		this->wykres->Series->Clear();
+		this->wykres->Series->Add("zwykly");
+		wykres->Series["zwykly"]->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+
+		try
+		{
+	for (int n = 0; n < 1500; n++) {
+				this->wykres->Series["zwykly"]->Points->AddY(Convert::ToDouble(tabelaDanych->Rows[n]->Cells[1]->Value));
+			}
+		}
+		catch (Exception ^brak)
+		{
+			MessageBox::Show("Brak wartoœci.");
+		}
 	
 }
 
-
+		 
 
 private: System::Void wykonajObliczenia_Click(System::Object^  sender, System::EventArgs^  e) {
-	this->wykres->Series->Clear();
-	this->wykres->Series->Add("zwykly");
-	wykres->Series["zwykly"]->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
 	
 	double k1, k2, k3, k4;
 	double m1, m2, m3, m4;
 	double x[1501], y[1501];
 	double mi, h;
-	
-	
 	
 			x[0] = 1;
 			y[0] = 1;
@@ -506,17 +550,32 @@ private: System::Void wykonajObliczenia_Click(System::Object^  sender, System::E
 				x[n + 1] = x[n] + h*(k1 + 2 * k2 + 2 * k3 + k4) / 6;
 				y[n + 1] = y[n] + h*(m1 + 2 * m2 + 2 * m3 + m4) / 6;
 
-		
+				this->tabelaDanych->Rows->Add();
+				this->tabelaDanych->Rows[n]->Cells[0]->Value = n;
+				this->tabelaDanych->Rows[n]->Cells[1]->Value = x[n];
+				this->tabelaDanych->Rows[n]->Cells[2]->Value = y[n];
 				
-				this->wykres->Series["zwykly"]->Points->AddY(x[n]);
+				
 			}
 
-		
-		
 
-	
+}
+private: System::Void rysujWykresFazowy_Click(System::Object^  sender, System::EventArgs^  e) {
+	this->wykresFazowy->Series->Clear();
+	this->wykresFazowy->Series->Add("cykl");
+	wykresFazowy->Series["cykl"]->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
 
-
+	try
+	{
+		for (int n = 0; n < 1500; n++) {
+			this->wykresFazowy->Series["cykl"]->Points->AddXY(Convert::ToDouble(tabelaDanych->Rows[n]->Cells[1]->Value), Convert::ToDouble(tabelaDanych->Rows[n]->Cells[2]->Value));
+			
+		}
+	}
+	catch (Exception ^brak)
+	{
+		MessageBox::Show("Brak wartoœci.");
+	}
 }
 };
 }
