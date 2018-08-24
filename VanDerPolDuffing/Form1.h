@@ -39,7 +39,7 @@ namespace WindowsFormApplication1 {
 	private: System::Windows::Forms::Label^  label1;
 	private: System::Windows::Forms::DataVisualization::Charting::Chart^  wykres;
 
-	private: System::Windows::Forms::Label^  label2;
+
 	private: System::Windows::Forms::DataVisualization::Charting::Chart^  wykresFazowy;
 
 	private: System::Windows::Forms::MenuStrip^  menuStrip1;
@@ -55,10 +55,13 @@ namespace WindowsFormApplication1 {
 	private: System::Windows::Forms::Panel^  panel1;
 	private: System::Windows::Forms::GroupBox^  Parametry;
 	private: System::Windows::Forms::Panel^  panel2;
-
-	private: System::Windows::Forms::TextBox^  podajMi;
-
 	private: System::Windows::Forms::TextBox^  podajY0;
+	private: System::Windows::Forms::TextBox^  podajX0;
+
+
+
+
+
 
 
 
@@ -86,9 +89,9 @@ namespace WindowsFormApplication1 {
 
 
 
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column2;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column3;
+
+
+
 	private: System::Windows::Forms::Label^  label7;
 	private: System::Windows::Forms::Label^  label6;
 	private: System::Windows::Forms::TextBox^  podajH;
@@ -96,7 +99,21 @@ namespace WindowsFormApplication1 {
 	private: System::Windows::Forms::Label^  label8;
 	private: System::Windows::Forms::TextBox^  podajW;
 	private: System::Windows::Forms::TextBox^  podajA;
-	private: System::Windows::Forms::TextBox^  podajX0;
+	private: System::Windows::Forms::TextBox^  podajMi;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column2;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column3;
+	private: System::Windows::Forms::ToolStripMenuItem^  informacjeToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  uruchomPonownieToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  zamknijToolStripMenuItem;
+
+
+
+
+
+
+
+
 	protected:
 
 	private:
@@ -120,10 +137,12 @@ namespace WindowsFormApplication1 {
 			System::Windows::Forms::DataVisualization::Charting::Series^  series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->wykres = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
-			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->wykresFazowy = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->menuToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->informacjeToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->uruchomPonownieToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->zamknijToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->zapiszWykres = (gcnew System::Windows::Forms::Button());
 			this->zapiszWykresFazowy = (gcnew System::Windows::Forms::Button());
 			this->wyczyscWykres = (gcnew System::Windows::Forms::Button());
@@ -134,14 +153,14 @@ namespace WindowsFormApplication1 {
 			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->podajW = (gcnew System::Windows::Forms::TextBox());
 			this->podajA = (gcnew System::Windows::Forms::TextBox());
-			this->podajX0 = (gcnew System::Windows::Forms::TextBox());
+			this->podajMi = (gcnew System::Windows::Forms::TextBox());
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->podajMi = (gcnew System::Windows::Forms::TextBox());
 			this->podajY0 = (gcnew System::Windows::Forms::TextBox());
+			this->podajX0 = (gcnew System::Windows::Forms::TextBox());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
 			this->znajdzWiersz = (gcnew System::Windows::Forms::TextBox());
 			this->znajdz = (gcnew System::Windows::Forms::Button());
@@ -167,13 +186,13 @@ namespace WindowsFormApplication1 {
 			// 
 			this->label1->AutoSize = true;
 			this->label1->BackColor = System::Drawing::Color::Gainsboro;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->label1->Location = System::Drawing::Point(24, 45);
+			this->label1->Location = System::Drawing::Point(247, 17);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(185, 25);
+			this->label1->Size = System::Drawing::Size(247, 29);
 			this->label1->TabIndex = 0;
-			this->label1->Text = L"Van der Pol Duffing ";
+			this->label1->Text = L"Van der Pol-Duffing ";
 			// 
 			// wykres
 			// 
@@ -194,18 +213,6 @@ namespace WindowsFormApplication1 {
 			this->wykres->Size = System::Drawing::Size(324, 236);
 			this->wykres->TabIndex = 1;
 			this->wykres->Text = L"wykres";
-			// 
-			// label2
-			// 
-			this->label2->AutoSize = true;
-			this->label2->BackColor = System::Drawing::Color::Gainsboro;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(238)));
-			this->label2->Location = System::Drawing::Point(378, 18);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(51, 20);
-			this->label2->TabIndex = 2;
-			this->label2->Text = L"label2";
 			// 
 			// wykresFazowy
 			// 
@@ -230,15 +237,39 @@ namespace WindowsFormApplication1 {
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->menuToolStripMenuItem });
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(746, 24);
+			this->menuStrip1->Size = System::Drawing::Size(744, 24);
 			this->menuStrip1->TabIndex = 4;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
 			// menuToolStripMenuItem
 			// 
+			this->menuToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
+				this->informacjeToolStripMenuItem,
+					this->uruchomPonownieToolStripMenuItem, this->zamknijToolStripMenuItem
+			});
 			this->menuToolStripMenuItem->Name = L"menuToolStripMenuItem";
 			this->menuToolStripMenuItem->Size = System::Drawing::Size(50, 20);
 			this->menuToolStripMenuItem->Text = L"Menu";
+			// 
+			// informacjeToolStripMenuItem
+			// 
+			this->informacjeToolStripMenuItem->Name = L"informacjeToolStripMenuItem";
+			this->informacjeToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->informacjeToolStripMenuItem->Text = L"Informacje";
+			// 
+			// uruchomPonownieToolStripMenuItem
+			// 
+			this->uruchomPonownieToolStripMenuItem->Name = L"uruchomPonownieToolStripMenuItem";
+			this->uruchomPonownieToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->uruchomPonownieToolStripMenuItem->Text = L"Uruchom ponownie";
+			this->uruchomPonownieToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::uruchomPonownieToolStripMenuItem_Click);
+			// 
+			// zamknijToolStripMenuItem
+			// 
+			this->zamknijToolStripMenuItem->Name = L"zamknijToolStripMenuItem";
+			this->zamknijToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->zamknijToolStripMenuItem->Text = L"Zamknij";
+			this->zamknijToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::zamknijToolStripMenuItem_Click);
 			// 
 			// zapiszWykres
 			// 
@@ -282,7 +313,7 @@ namespace WindowsFormApplication1 {
 			// 
 			this->panel1->BackColor = System::Drawing::Color::Silver;
 			this->panel1->Controls->Add(this->wykresFazowy);
-			this->panel1->Controls->Add(this->label2);
+			this->panel1->Controls->Add(this->label1);
 			this->panel1->Controls->Add(this->zapiszWykresFazowy);
 			this->panel1->Controls->Add(this->wyczyscWykresFazowy);
 			this->panel1->Controls->Add(this->wyczyscWykres);
@@ -298,14 +329,14 @@ namespace WindowsFormApplication1 {
 			this->Parametry->Controls->Add(this->label8);
 			this->Parametry->Controls->Add(this->podajW);
 			this->Parametry->Controls->Add(this->podajA);
-			this->Parametry->Controls->Add(this->podajX0);
+			this->Parametry->Controls->Add(this->podajMi);
 			this->Parametry->Controls->Add(this->label7);
 			this->Parametry->Controls->Add(this->label6);
 			this->Parametry->Controls->Add(this->label5);
 			this->Parametry->Controls->Add(this->label4);
 			this->Parametry->Controls->Add(this->label3);
-			this->Parametry->Controls->Add(this->podajMi);
 			this->Parametry->Controls->Add(this->podajY0);
+			this->Parametry->Controls->Add(this->podajX0);
 			this->Parametry->Location = System::Drawing::Point(12, 7);
 			this->Parametry->Name = L"Parametry";
 			this->Parametry->Size = System::Drawing::Size(248, 114);
@@ -343,12 +374,12 @@ namespace WindowsFormApplication1 {
 			this->podajA->Size = System::Drawing::Size(50, 20);
 			this->podajA->TabIndex = 11;
 			// 
-			// podajX0
+			// podajMi
 			// 
-			this->podajX0->Location = System::Drawing::Point(27, 17);
-			this->podajX0->Name = L"podajX0";
-			this->podajX0->Size = System::Drawing::Size(50, 20);
-			this->podajX0->TabIndex = 10;
+			this->podajMi->Location = System::Drawing::Point(185, 17);
+			this->podajMi->Name = L"podajMi";
+			this->podajMi->Size = System::Drawing::Size(50, 20);
+			this->podajMi->TabIndex = 10;
 			// 
 			// label7
 			// 
@@ -395,19 +426,19 @@ namespace WindowsFormApplication1 {
 			this->label3->TabIndex = 4;
 			this->label3->Text = L"x =";
 			// 
-			// podajMi
-			// 
-			this->podajMi->Location = System::Drawing::Point(185, 17);
-			this->podajMi->Name = L"podajMi";
-			this->podajMi->Size = System::Drawing::Size(50, 20);
-			this->podajMi->TabIndex = 2;
-			// 
 			// podajY0
 			// 
 			this->podajY0->Location = System::Drawing::Point(102, 17);
 			this->podajY0->Name = L"podajY0";
 			this->podajY0->Size = System::Drawing::Size(50, 20);
-			this->podajY0->TabIndex = 1;
+			this->podajY0->TabIndex = 2;
+			// 
+			// podajX0
+			// 
+			this->podajX0->Location = System::Drawing::Point(27, 17);
+			this->podajX0->Name = L"podajX0";
+			this->podajX0->Size = System::Drawing::Size(50, 20);
+			this->podajX0->TabIndex = 1;
 			// 
 			// panel2
 			// 
@@ -476,24 +507,24 @@ namespace WindowsFormApplication1 {
 			// 
 			// Column1
 			// 
-			this->Column1->HeaderText = L"nr iteracji";
+			this->Column1->HeaderText = L"numer iteracji";
 			this->Column1->Name = L"Column1";
 			this->Column1->ReadOnly = true;
-			this->Column1->Width = 72;
+			this->Column1->Width = 60;
 			// 
 			// Column2
 			// 
 			this->Column2->HeaderText = L"x";
 			this->Column2->Name = L"Column2";
 			this->Column2->ReadOnly = true;
-			this->Column2->Width = 73;
+			this->Column2->Width = 70;
 			// 
 			// Column3
 			// 
 			this->Column3->HeaderText = L"y";
 			this->Column3->Name = L"Column3";
 			this->Column3->ReadOnly = true;
-			this->Column3->Width = 73;
+			this->Column3->Width = 70;
 			// 
 			// zapiszDane
 			// 
@@ -540,9 +571,8 @@ namespace WindowsFormApplication1 {
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::Gainsboro;
-			this->ClientSize = System::Drawing::Size(746, 529);
+			this->ClientSize = System::Drawing::Size(744, 529);
 			this->Controls->Add(this->panel2);
-			this->Controls->Add(this->label1);
 			this->Controls->Add(this->zapiszWykres);
 			this->Controls->Add(this->wykres);
 			this->Controls->Add(this->panel1);
@@ -690,10 +720,28 @@ private: System::Void zapiszDane_Click(System::Object^  sender, System::EventArg
 
 
 private: System::Void znajdz_Click(System::Object^  sender, System::EventArgs^  e) {
-	int a = Double::Parse(znajdzWiersz->Text);
-	double x = Convert::ToDouble(tabelaDanych->Rows[a]->Cells[1]->Value);
-	double y = Convert::ToDouble(tabelaDanych->Rows[a]->Cells[2]->Value);
-	MessageBox::Show( "x = " + x + "\ny = "+ y  ,"Wartości w wierszu numer " + a);
+	if (znajdzWiersz->Text->IsNullOrWhiteSpace(znajdzWiersz->Text)) {
+		MessageBox::Show("Podaj numer szukanego wiersza");
+	}
+	else {
+		try		{
+		int a = Double::Parse(znajdzWiersz->Text);
+		double x = Convert::ToDouble(tabelaDanych->Rows[a]->Cells[1]->Value);
+		double y = Convert::ToDouble(tabelaDanych->Rows[a]->Cells[2]->Value);
+		MessageBox::Show("x = " + x + "\ny = " + y, "Wartości w wierszu numer " + a);
+				}
+		catch (Exception ^blad)
+		{
+			MessageBox::Show(blad->ToString(), "Podaj liczbe naturalną");
+		}
+		
+	}
+}
+private: System::Void zamknijToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+	Application::Exit();
+}
+private: System::Void uruchomPonownieToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+	Application::Restart();
 }
 };
 }
