@@ -44,8 +44,8 @@ namespace WindowsFormApplication1 {
 
 	private: System::Windows::Forms::MenuStrip^  menuStrip1;
 	private: System::Windows::Forms::ToolStripMenuItem^  menuToolStripMenuItem;
-	private: System::Windows::Forms::Button^  zapiszWykres;
-	private: System::Windows::Forms::Button^  zapiszWykresFazowy;
+
+
 	private: System::Windows::Forms::Button^  wyczyscWykres;
 	private: System::Windows::Forms::Button^  wyczyscWykresFazowy;
 
@@ -94,7 +94,8 @@ namespace WindowsFormApplication1 {
 
 	private: System::Windows::Forms::Label^  label7;
 	private: System::Windows::Forms::Label^  label6;
-	private: System::Windows::Forms::TextBox^  podajH;
+	private: System::Windows::Forms::TextBox^  podajF;
+
 
 	private: System::Windows::Forms::Label^  label8;
 	private: System::Windows::Forms::TextBox^  podajW;
@@ -106,6 +107,12 @@ namespace WindowsFormApplication1 {
 	private: System::Windows::Forms::ToolStripMenuItem^  informacjeToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  uruchomPonownieToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  zamknijToolStripMenuItem;
+	private: System::Windows::Forms::Label^  label2;
+	private: System::Windows::Forms::TextBox^  podajH;
+	private: System::Windows::Forms::ToolStripMenuItem^  autorToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  rownanieToolStripMenuItem;
+
+
 
 
 
@@ -141,15 +148,17 @@ namespace WindowsFormApplication1 {
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->menuToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->informacjeToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->rownanieToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->autorToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->uruchomPonownieToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->zamknijToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->zapiszWykres = (gcnew System::Windows::Forms::Button());
-			this->zapiszWykresFazowy = (gcnew System::Windows::Forms::Button());
 			this->wyczyscWykres = (gcnew System::Windows::Forms::Button());
 			this->wyczyscWykresFazowy = (gcnew System::Windows::Forms::Button());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->Parametry = (gcnew System::Windows::Forms::GroupBox());
+			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->podajH = (gcnew System::Windows::Forms::TextBox());
+			this->podajF = (gcnew System::Windows::Forms::TextBox());
 			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->podajW = (gcnew System::Windows::Forms::TextBox());
 			this->podajA = (gcnew System::Windows::Forms::TextBox());
@@ -253,9 +262,27 @@ namespace WindowsFormApplication1 {
 			// 
 			// informacjeToolStripMenuItem
 			// 
+			this->informacjeToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+				this->rownanieToolStripMenuItem,
+					this->autorToolStripMenuItem
+			});
 			this->informacjeToolStripMenuItem->Name = L"informacjeToolStripMenuItem";
 			this->informacjeToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->informacjeToolStripMenuItem->Text = L"Informacje";
+			// 
+			// rownanieToolStripMenuItem
+			// 
+			this->rownanieToolStripMenuItem->Name = L"rownanieToolStripMenuItem";
+			this->rownanieToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->rownanieToolStripMenuItem->Text = L"Rownanie";
+			this->rownanieToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::rownanieToolStripMenuItem_Click);
+			// 
+			// autorToolStripMenuItem
+			// 
+			this->autorToolStripMenuItem->Name = L"autorToolStripMenuItem";
+			this->autorToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->autorToolStripMenuItem->Text = L"Autor";
+			this->autorToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::autorToolStripMenuItem_Click);
 			// 
 			// uruchomPonownieToolStripMenuItem
 			// 
@@ -270,24 +297,6 @@ namespace WindowsFormApplication1 {
 			this->zamknijToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->zamknijToolStripMenuItem->Text = L"Zamknij";
 			this->zamknijToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::zamknijToolStripMenuItem_Click);
-			// 
-			// zapiszWykres
-			// 
-			this->zapiszWykres->Location = System::Drawing::Point(29, 336);
-			this->zapiszWykres->Name = L"zapiszWykres";
-			this->zapiszWykres->Size = System::Drawing::Size(102, 23);
-			this->zapiszWykres->TabIndex = 5;
-			this->zapiszWykres->Text = L"Zapisz wykres";
-			this->zapiszWykres->UseVisualStyleBackColor = true;
-			// 
-			// zapiszWykresFazowy
-			// 
-			this->zapiszWykresFazowy->Location = System::Drawing::Point(382, 309);
-			this->zapiszWykresFazowy->Name = L"zapiszWykresFazowy";
-			this->zapiszWykresFazowy->Size = System::Drawing::Size(102, 23);
-			this->zapiszWykresFazowy->TabIndex = 6;
-			this->zapiszWykresFazowy->Text = L"Zapisz wykres";
-			this->zapiszWykresFazowy->UseVisualStyleBackColor = true;
 			// 
 			// wyczyscWykres
 			// 
@@ -314,7 +323,6 @@ namespace WindowsFormApplication1 {
 			this->panel1->BackColor = System::Drawing::Color::Silver;
 			this->panel1->Controls->Add(this->wykresFazowy);
 			this->panel1->Controls->Add(this->label1);
-			this->panel1->Controls->Add(this->zapiszWykresFazowy);
 			this->panel1->Controls->Add(this->wyczyscWykresFazowy);
 			this->panel1->Controls->Add(this->wyczyscWykres);
 			this->panel1->Location = System::Drawing::Point(12, 27);
@@ -325,7 +333,9 @@ namespace WindowsFormApplication1 {
 			// Parametry
 			// 
 			this->Parametry->BackColor = System::Drawing::Color::Silver;
+			this->Parametry->Controls->Add(this->label2);
 			this->Parametry->Controls->Add(this->podajH);
+			this->Parametry->Controls->Add(this->podajF);
 			this->Parametry->Controls->Add(this->label8);
 			this->Parametry->Controls->Add(this->podajW);
 			this->Parametry->Controls->Add(this->podajA);
@@ -344,21 +354,37 @@ namespace WindowsFormApplication1 {
 			this->Parametry->TabStop = false;
 			this->Parametry->Text = L"Parametry";
 			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Location = System::Drawing::Point(158, 53);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(22, 13);
+			this->label2->TabIndex = 16;
+			this->label2->Text = L"F =";
+			// 
 			// podajH
 			// 
-			this->podajH->Location = System::Drawing::Point(185, 50);
+			this->podajH->Location = System::Drawing::Point(27, 83);
 			this->podajH->Name = L"podajH";
 			this->podajH->Size = System::Drawing::Size(50, 20);
-			this->podajH->TabIndex = 14;
+			this->podajH->TabIndex = 15;
+			// 
+			// podajF
+			// 
+			this->podajF->Location = System::Drawing::Point(185, 50);
+			this->podajF->Name = L"podajF";
+			this->podajF->Size = System::Drawing::Size(50, 20);
+			this->podajF->TabIndex = 14;
 			// 
 			// label8
 			// 
 			this->label8->AutoSize = true;
-			this->label8->Location = System::Drawing::Point(158, 52);
+			this->label8->Location = System::Drawing::Point(7, 86);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(25, 13);
+			this->label8->Size = System::Drawing::Size(22, 13);
 			this->label8->TabIndex = 13;
-			this->label8->Text = L"h  =";
+			this->label8->Text = L"h =";
 			// 
 			// podajW
 			// 
@@ -573,7 +599,6 @@ namespace WindowsFormApplication1 {
 			this->BackColor = System::Drawing::Color::Gainsboro;
 			this->ClientSize = System::Drawing::Size(744, 529);
 			this->Controls->Add(this->panel2);
-			this->Controls->Add(this->zapiszWykres);
 			this->Controls->Add(this->wykres);
 			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->menuStrip1);
@@ -632,15 +657,16 @@ private: System::Void wykonajObliczenia_Click(System::Object^  sender, System::E
 	double k1, k2, k3, k4;
 	double m1, m2, m3, m4;
 	double x[1501], y[1501];
-	double mi, h, a, w;
+	double mi, h, a, w, F;
 	this->tabelaDanych->Rows->Clear();
 
 	if (podajX0->Text->IsNullOrWhiteSpace(podajX0->Text) ||
 		podajY0->Text->IsNullOrWhiteSpace(podajY0->Text) ||
 		podajMi->Text->IsNullOrWhiteSpace(podajMi->Text) ||
-		podajA->Text->IsNullOrWhiteSpace(podajY0->Text) ||
-		podajW->Text->IsNullOrWhiteSpace(podajY0->Text) ||
-		podajH->Text->IsNullOrWhiteSpace(podajY0->Text) ) {
+		podajA->Text->IsNullOrWhiteSpace(podajA->Text) ||
+		podajW->Text->IsNullOrWhiteSpace(podajW->Text) ||
+		podajF->Text->IsNullOrWhiteSpace(podajF->Text) ||
+		podajH->Text->IsNullOrWhiteSpace(podajH->Text) ) {
 		MessageBox::Show("Brak parametrów");
 	}
 	else {
@@ -651,16 +677,17 @@ private: System::Void wykonajObliczenia_Click(System::Object^  sender, System::E
 			mi = Double::Parse(podajMi->Text);
 			a = Double::Parse(podajA->Text);
 			w = Double::Parse(podajW->Text);
+			F = Double::Parse(podajF->Text);
 			h = Double::Parse(podajH->Text);
 			for (int n = 0; n < 1500; n++) {
 				k1 = y[n];
-				m1 = mi*(1 - pow(x[n], 2))*y[n] - x[n] -a*(pow(x[n], 3)) + cos(n*w);
+				m1 = mi*(1 - pow(x[n], 2))*y[n] - x[n] -a*(pow(x[n], 3)) + F*cos(n*w);
 				k2 = y[n] + (h*m1 / 2);
-				m2 = mi*(1 - pow(x[n] + (h*k1 / 2), 2))*(y[n] + (h*m1 / 2)) + (x[n] + (h*k1 / 2)) - a*(pow((x[n] + (h*k1 / 2)), 3)) + cos(w*(n+h/2));
+				m2 = mi*(1 - pow(x[n] + (h*k1 / 2), 2))*(y[n] + (h*m1 / 2)) + (x[n] + (h*k1 / 2)) - a*(pow((x[n] + (h*k1 / 2)), 3)) + F*cos(w*(n+h/2));
 				k3 = y[n] + (h*m2 / 2);
-				m3 = mi*(1 - pow(x[n] + (h*k2 / 2), 2))*(y[n] + (h*m2 / 2)) + (x[n] + (h*k2 / 2)) - a*(pow((x[n] + (h*k2 / 2)), 3)) + cos(w*(n+h / 2));
+				m3 = mi*(1 - pow(x[n] + (h*k2 / 2), 2))*(y[n] + (h*m2 / 2)) + (x[n] + (h*k2 / 2)) - a*(pow((x[n] + (h*k2 / 2)), 3)) + F*cos(w*(n+h / 2));
 				k4 = y[n] + h*m3;
-				m4 = mi*(1 - pow(x[n] + (h*k1), 2))*(y[n] + (h*m1)) + (x[n] + (h*k1)) - a*(pow((x[n] + (h*k1)), 3)) + cos(w*(n+h));
+				m4 = mi*(1 - pow(x[n] + (h*k1), 2))*(y[n] + (h*m1)) + (x[n] + (h*k1)) - a*(pow((x[n] + (h*k1)), 3)) + F*cos(w*(n+h));
 
 				x[n + 1] = x[n] + h*(k1 + 2 * k2 + 2 * k3 + k4) / 6;
 				y[n + 1] = y[n] + h*(m1 + 2 * m2 + 2 * m3 + m4) / 6;
@@ -742,6 +769,12 @@ private: System::Void zamknijToolStripMenuItem_Click(System::Object^  sender, Sy
 }
 private: System::Void uruchomPonownieToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 	Application::Restart();
+}
+private: System::Void autorToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+	MessageBox::Show("Politechnika Gdańska \nMatematyka \nGeometria i grafika komputerowa \nPiotr Szultka \nnr indeksu: 150 557", "Autor");
+}
+private: System::Void rownanieToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+	MessageBox::Show("x'' - u*(1-x^2)*x' + x + a*x^3 = F*cos(w*t)","Równanie Van der Pola-Duffinga");
 }
 };
 }
