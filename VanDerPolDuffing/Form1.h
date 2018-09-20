@@ -149,6 +149,7 @@ namespace WindowsFormApplication1 {
 			this->wykresFazowy = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->menuToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->instrukcjaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->informacjeToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->rownanieToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->autorToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -184,7 +185,6 @@ namespace WindowsFormApplication1 {
 			this->rysujWykresFazowy = (gcnew System::Windows::Forms::Button());
 			this->rysujWykres = (gcnew System::Windows::Forms::Button());
 			this->wykonajObliczenia = (gcnew System::Windows::Forms::Button());
-			this->instrukcjaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->wykres))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->wykresFazowy))->BeginInit();
 			this->menuStrip1->SuspendLayout();
@@ -263,6 +263,13 @@ namespace WindowsFormApplication1 {
 			this->menuToolStripMenuItem->Size = System::Drawing::Size(50, 20);
 			this->menuToolStripMenuItem->Text = L"Menu";
 			// 
+			// instrukcjaToolStripMenuItem
+			// 
+			this->instrukcjaToolStripMenuItem->Name = L"instrukcjaToolStripMenuItem";
+			this->instrukcjaToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->instrukcjaToolStripMenuItem->Text = L"Instrukcja";
+			this->instrukcjaToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::instrukcjaToolStripMenuItem_Click);
+			// 
 			// informacjeToolStripMenuItem
 			// 
 			this->informacjeToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
@@ -276,14 +283,14 @@ namespace WindowsFormApplication1 {
 			// rownanieToolStripMenuItem
 			// 
 			this->rownanieToolStripMenuItem->Name = L"rownanieToolStripMenuItem";
-			this->rownanieToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->rownanieToolStripMenuItem->Size = System::Drawing::Size(126, 22);
 			this->rownanieToolStripMenuItem->Text = L"Równanie";
 			this->rownanieToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::rownanieToolStripMenuItem_Click);
 			// 
 			// autorToolStripMenuItem
 			// 
 			this->autorToolStripMenuItem->Name = L"autorToolStripMenuItem";
-			this->autorToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->autorToolStripMenuItem->Size = System::Drawing::Size(126, 22);
 			this->autorToolStripMenuItem->Text = L"Autor";
 			this->autorToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::autorToolStripMenuItem_Click);
 			// 
@@ -595,13 +602,6 @@ namespace WindowsFormApplication1 {
 			this->wykonajObliczenia->UseVisualStyleBackColor = true;
 			this->wykonajObliczenia->Click += gcnew System::EventHandler(this, &Form1::wykonajObliczenia_Click);
 			// 
-			// instrukcjaToolStripMenuItem
-			// 
-			this->instrukcjaToolStripMenuItem->Name = L"instrukcjaToolStripMenuItem";
-			this->instrukcjaToolStripMenuItem->Size = System::Drawing::Size(180, 22);
-			this->instrukcjaToolStripMenuItem->Text = L"Instrukcja";
-			this->instrukcjaToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::instrukcjaToolStripMenuItem_Click);
-			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -614,7 +614,7 @@ namespace WindowsFormApplication1 {
 			this->Controls->Add(this->menuStrip1);
 			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"Form1";
-			this->Text = L"Form1";
+			this->Text = L"VanDerPolDuffing";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->wykres))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->wykresFazowy))->EndInit();
 			this->menuStrip1->ResumeLayout(false);
