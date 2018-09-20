@@ -1,4 +1,5 @@
 ﻿#pragma once
+#define _USE_MATH_DEFINES
 
 #include<math.h>
 #include<fstream>
@@ -681,13 +682,13 @@ private: System::Void wykonajObliczenia_Click(System::Object^  sender, System::E
 			h = Double::Parse(podajH->Text);
 			for (int n = 0; n < 1500; n++) {
 				k1 = y[n];
-				m1 = mi*(1 - pow(x[n], 2))*y[n] - x[n] -a*(pow(x[n], 3)) + F*cos(n*w);
-				k2 = y[n] + (h*m1 / 2);
-				m2 = mi*(1 - pow(x[n] + (h*k1 / 2), 2))*(y[n] + (h*m1 / 2)) + (x[n] + (h*k1 / 2)) - a*(pow((x[n] + (h*k1 / 2)), 3)) + F*cos(w*(n+h/2));
-				k3 = y[n] + (h*m2 / 2);
-				m3 = mi*(1 - pow(x[n] + (h*k2 / 2), 2))*(y[n] + (h*m2 / 2)) + (x[n] + (h*k2 / 2)) - a*(pow((x[n] + (h*k2 / 2)), 3)) + F*cos(w*(n+h / 2));
+				m1 = (-x[n]) + mi*(1 - pow(x[n], 2))*y[n] - a*(pow(x[n], 3)) + F*cos((n*M_PI / 180)*w);
+				k2 = y[n] + h*m1 / 2;
+				m2 = -(x[n] + h*k1 / 2) + mi*(1 - pow(x[n] + h*k1 / 2, 2))*(y[n] + h*m1 / 2) - a*(pow((x[n] + h*k1 / 2), 3)) + F*cos(w*((n*M_PI/180) + h / 2));
+				k3 = y[n] + h*m2 / 2;
+				m3 = -(x[n] + h*k2 / 2) + mi*(1 - pow(x[n] + h*k2 / 2, 2))*(y[n] + h*m2 / 2) - a*(pow((x[n] + h*k2 / 2), 3)) + F*cos(w*((n*M_PI/180) + h / 2));
 				k4 = y[n] + h*m3;
-				m4 = mi*(1 - pow(x[n] + (h*k1), 2))*(y[n] + (h*m1)) + (x[n] + (h*k1)) - a*(pow((x[n] + (h*k1)), 3)) + F*cos(w*(n+h));
+				m4 = -(x[n] + h*k3) + mi*(1 - pow(x[n] + h*k3, 2))*(y[n] + h*m3) - a*(pow((x[n] + h*k3), 3)) + F*cos(w*((n*M_PI / 180) + h));
 
 				x[n + 1] = x[n] + h*(k1 + 2 * k2 + 2 * k3 + k4) / 6;
 				y[n + 1] = y[n] + h*(m1 + 2 * m2 + 2 * m3 + m4) / 6;
