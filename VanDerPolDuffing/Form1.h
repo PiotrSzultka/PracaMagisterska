@@ -112,6 +112,7 @@ namespace WindowsFormApplication1 {
 	private: System::Windows::Forms::TextBox^  podajH;
 	private: System::Windows::Forms::ToolStripMenuItem^  autorToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  rownanieToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  instrukcjaToolStripMenuItem;
 
 
 
@@ -183,6 +184,7 @@ namespace WindowsFormApplication1 {
 			this->rysujWykresFazowy = (gcnew System::Windows::Forms::Button());
 			this->rysujWykres = (gcnew System::Windows::Forms::Button());
 			this->wykonajObliczenia = (gcnew System::Windows::Forms::Button());
+			this->instrukcjaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->wykres))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->wykresFazowy))->BeginInit();
 			this->menuStrip1->SuspendLayout();
@@ -253,9 +255,9 @@ namespace WindowsFormApplication1 {
 			// 
 			// menuToolStripMenuItem
 			// 
-			this->menuToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
-				this->informacjeToolStripMenuItem,
-					this->uruchomPonownieToolStripMenuItem, this->zamknijToolStripMenuItem
+			this->menuToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
+				this->instrukcjaToolStripMenuItem,
+					this->informacjeToolStripMenuItem, this->uruchomPonownieToolStripMenuItem, this->zamknijToolStripMenuItem
 			});
 			this->menuToolStripMenuItem->Name = L"menuToolStripMenuItem";
 			this->menuToolStripMenuItem->Size = System::Drawing::Size(50, 20);
@@ -275,7 +277,7 @@ namespace WindowsFormApplication1 {
 			// 
 			this->rownanieToolStripMenuItem->Name = L"rownanieToolStripMenuItem";
 			this->rownanieToolStripMenuItem->Size = System::Drawing::Size(152, 22);
-			this->rownanieToolStripMenuItem->Text = L"Rownanie";
+			this->rownanieToolStripMenuItem->Text = L"Równanie";
 			this->rownanieToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::rownanieToolStripMenuItem_Click);
 			// 
 			// autorToolStripMenuItem
@@ -593,6 +595,13 @@ namespace WindowsFormApplication1 {
 			this->wykonajObliczenia->UseVisualStyleBackColor = true;
 			this->wykonajObliczenia->Click += gcnew System::EventHandler(this, &Form1::wykonajObliczenia_Click);
 			// 
+			// instrukcjaToolStripMenuItem
+			// 
+			this->instrukcjaToolStripMenuItem->Name = L"instrukcjaToolStripMenuItem";
+			this->instrukcjaToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->instrukcjaToolStripMenuItem->Text = L"Instrukcja";
+			this->instrukcjaToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::instrukcjaToolStripMenuItem_Click);
+			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -682,14 +691,16 @@ private: System::Void wykonajObliczenia_Click(System::Object^  sender, System::E
 			h = Double::Parse(podajH->Text);
 			for (int n = 0; n < 1500; n++) {
 				k1 = y[n];
-				m1 = (-x[n]) + mi*(1 - pow(x[n], 2))*y[n] - a*(pow(x[n], 3)) + F*cos((n*M_PI / 180)*w);
+				m1 = (-x[n]) + mi*(1 - pow(x[n], 2))*y[n] - a*(pow(x[n], 3)) + F * cos((n*M_PI / 180)*w);
 				k2 = y[n] + h*m1 / 2;
-				m2 = -(x[n] + h*k1 / 2) + mi*(1 - pow(x[n] + h*k1 / 2, 2))*(y[n] + h*m1 / 2) - a*(pow((x[n] + h*k1 / 2), 3)) + F*cos(w*((n*M_PI/180) + h / 2));
+						m2 = -(x[n] + h*k1 / 2) + mi*(1 - pow(x[n] + h*k1 / 2, 2))*(y[n] + h*m1 / 2);
+				m2 = m2 - a*(pow((x[n] + h*k1 / 2), 3)) + F * cos(w*((n*M_PI / 180) + h / 2));
 				k3 = y[n] + h*m2 / 2;
-				m3 = -(x[n] + h*k2 / 2) + mi*(1 - pow(x[n] + h*k2 / 2, 2))*(y[n] + h*m2 / 2) - a*(pow((x[n] + h*k2 / 2), 3)) + F*cos(w*((n*M_PI/180) + h / 2));
+						m3 = -(x[n] + h*k2 / 2) + mi*(1 - pow(x[n] + h*k2 / 2, 2))*(y[n] + h*m2 / 2);
+				m3 = m3 - a*(pow((x[n] + h*k2 / 2), 3)) + F * cos(w*((n*M_PI / 180) + h / 2));
 				k4 = y[n] + h*m3;
-				m4 = -(x[n] + h*k3) + mi*(1 - pow(x[n] + h*k3, 2))*(y[n] + h*m3) - a*(pow((x[n] + h*k3), 3)) + F*cos(w*((n*M_PI / 180) + h));
-
+						m4 = -(x[n] + h*k3) + mi*(1 - pow(x[n] + h*k3, 2))*(y[n] + h*m3);
+				m4 = m4 - a*(pow((x[n] + h*k3), 3)) + F * cos(w*((n*M_PI / 180) + h));
 				x[n + 1] = x[n] + h*(k1 + 2 * k2 + 2 * k3 + k4) / 6;
 				y[n + 1] = y[n] + h*(m1 + 2 * m2 + 2 * m3 + m4) / 6;
 
@@ -760,7 +771,7 @@ private: System::Void znajdz_Click(System::Object^  sender, System::EventArgs^  
 				}
 		catch (Exception ^blad)
 		{
-			MessageBox::Show(blad->ToString(), "Podaj liczbe naturalną");
+			MessageBox::Show(blad->ToString());
 		}
 		
 	}
@@ -772,10 +783,20 @@ private: System::Void uruchomPonownieToolStripMenuItem_Click(System::Object^  se
 	Application::Restart();
 }
 private: System::Void autorToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-	MessageBox::Show("Politechnika Gdańska \nMatematyka \nGeometria i grafika komputerowa \nPiotr Szultka \nnr indeksu: 150 557", "Autor");
+	MessageBox::Show("Politechnika Gdańska \n"
+		"Matematyka \n"
+		"Geometria i grafika komputerowa \n"
+		"Piotr Szultka \n"
+		"nr indeksu: 150 557", "Autor");
 }
 private: System::Void rownanieToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 	MessageBox::Show("x'' - u*(1-x^2)*x' + x + a*x^3 = F*cos(w*t)","Równanie Van der Pola-Duffinga");
+}
+private: System::Void instrukcjaToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+	MessageBox::Show("Aby poprawnie użyć aplikacji należy:\n"
+		"1. Podać wszystkie parametry,\n"
+		"2. Nacisnąć przycisk ,,Wykonaj obliczenia'',\n"
+		"3. Nacisnąć przycisk ,,Wykres'' lub ,,Wykres fazowy''.", "Instrukcja");
 }
 };
 }
